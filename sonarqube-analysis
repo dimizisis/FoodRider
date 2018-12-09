@@ -3,11 +3,11 @@ node{
   git 'https://github.com/dimizisis/FoodRider.git'
   }
   stage('Compile-Package'){
-    def mvnHome = tool name: 'maven3', type: 'maven'
+    def mvnHome = tool name: 'maven', type: 'maven'
     sh "${mvnHome}/bin/mvn package"
   }
   stage ('SonarQube Code Analysis'){
-    def mvnHome = tool name: 'maven3', type: 'maven'
+    def mvnHome = tool name: 'maven', type: 'maven'
       withSonarQubeEnv('sonar-6'){
       sh "${mvnHome}/bin/mvn sonar:sonar"
       }
